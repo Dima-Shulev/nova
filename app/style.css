@@ -1,0 +1,42 @@
+*{
+  margin:0;
+  padding:0;
+}
+.container{
+  display:flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height:100vh;
+}
+.form{
+  background-color: grey;
+  width:270px;
+  height:250px;
+  color:black;
+  font-size:18px;
+  text-align:center;
+  border-radius: 10px;
+}
+input{
+  margin: 10px;
+  height: 30px;
+  font-size: 20px;
+  border-radius:3px;
+}
+.btn:hover{
+  color:#fff;
+  background-color:#000000;
+  font-size: 20px;
+}
+.db{
+  background-color: yellow;
+  width:555px;
+}
+table, tr, td {
+  border:1px solid #000000;
+}
+td{
+  height:40px;
+ padding: 0 5px 0 5px;
+}
