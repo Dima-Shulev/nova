@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="form.js"></script>
+    <script>
+        window.onload = function(){
+            let form = new Form;
+            form.responseData();
+        }
+    </script>
 </head>
 <body>
-<form action="/app.php" method="POST">
-  <input name="my_text" type="text">
-  <input type="submit">
+<div class="container">
+<form action="/app.php" method="POST" class="form">
+  <input name="name" type="text" placeholder="Ваше имя"><br>
+  <input name="middle" type="text" placeholder="Ваше отчество"><br>
+  <input name="birthday" type="date" placeholder="Дата рождения"><br>
+  <button name="enter" type="button" class="btn" id="submit">Отправить</button>
 </form>
+</div>
+<div>
+    <table id="myTable">
+        <script>
+            let res = new Form();
+            res.newResponse();
+        </script>
+    </table>
+</div>
 </body>
 </html>
