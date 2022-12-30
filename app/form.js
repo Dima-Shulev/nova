@@ -4,19 +4,19 @@ class Form{
     urlPhp;
     values;
     body;
-    fields;
-    textDb;
+    fields;    
+    table;
+    tr;   
 
 
     constructor(){
         this.form = document.querySelector(".form");
         this.result = document.getElementById("submit");
-        this.dB = document.getElementById("myTable");
         this.urlPhp = "app.php";
     }
 
-    ajax(bodyResponse,ContentType,url){
-        async function getDate(bodyResponse,ContentType){
+    ajax(ContentType,url,bodyResponse=null){
+        async function getDate(ContentType,bodyResponse=null){
             let response = await fetch(url,{
                 method: "POST",
                 headers: {
@@ -28,7 +28,7 @@ class Form{
             console.log(result);
         }
 
-        console.log(getDate(bodyResponse,ContentType));
+        console.log(getDate(ContentType,bodyResponse));
     }
 
 
@@ -47,12 +47,27 @@ class Form{
             this.body.push(encodeKey + "=" + encodeValue);
         }
         this.body = this.body.join("&");
-        this.ajax(this.body,"application/x-www-form-urlencoded","app.php");
+        this.ajax("application/x-www-form-urlencoded","app.php",this.body);
     }
-    callBack(){
-        this.textDb = [];
-        this.ajax(JSON.stringify(this.textDb),"application/x-www-form-urlencoded","textDate.php");
+
+    tableCreat(bodyArray){
+        this.table = document.createElement("table");
+        this.table.className = "myTable";
+        document.body.append(this.table);
+        this.tr = document.createElement("tr");
+        for(let i = 0; i < bodyArray.length; i++){
+            this.td = document.createElement("td");
+            this.td.innerText = bodyArray[i];
+            this.tr.append(this.td);
+        }
+        this.table.append(this.tr);
     }
+
+    CallBack(event){
+        this.ajax("application/x-www-form-urlencoded","textDate.php",this.body);
+        this.tableCreat(this.body);
+    }
+
 
     responseData(){
     this.result.addEventListener("click", () =>{
@@ -61,8 +76,8 @@ class Form{
     }
 
     newResponse(){
-        this.result.addEventListener("click",() =>{
-            this.callBack();
+        this.result.addEventListener("click", () =>{
+            this.CallBack();
         });
     }
 }
