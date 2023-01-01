@@ -40,8 +40,15 @@ td{
  height:40px;
  padding: 0 5px 0 5px;
 }
-.myTable{
+#table{
   background-color:grey;
   width:550px;
   min-height:50px;
+  float: left;
+}
+.cont{
+  display:flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
 }
