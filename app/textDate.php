@@ -5,7 +5,7 @@ $connect = new PDO("mysql:host=".Connect::HOST.";dbname=".Connect::DB.";charset=
 function queryDateBase($connect){
     $result = [];
     $arr = $_POST;
-    $prepare = $connect->prepare("SELECT * FROM `test` WHERE id > '1'");
+    $prepare = $connect->prepare("SELECT * FROM `test` WHERE `id` > 1");
     $prepare->execute();
     $res = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
@@ -15,6 +15,5 @@ function queryDateBase($connect){
     $result = array_merge($result, $arr);
     return $result;
 }
-
-var_dump(queryDateBase($connect));
+echo json_encode(queryDateBase($connect));
 ?>
